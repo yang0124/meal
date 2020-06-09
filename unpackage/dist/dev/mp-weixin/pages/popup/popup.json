@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "spopup": "/components/s-popup/index"
+  }
+}

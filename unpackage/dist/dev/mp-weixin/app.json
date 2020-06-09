@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/nutrition/nutrition",
+    "pages/microp/microp",
+    "pages/indexDetail/indexDetail",
+    "pages/nutrDetail/nutrDetail",
+    "pages/cookingDetail/cookingDetail",
+    "pages/micrDetail/micrDetail",
+    "pages/log/log",
+    "pages/popup/popup"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/img/recipe.png",
+        "selectedIconPath": "static/img/recipe-active.png",
+        "text": "食谱"
+      },
+      {
+        "pagePath": "pages/nutrition/nutrition",
+        "iconPath": "static/img/nutrition.png",
+        "selectedIconPath": "static/img/nutrition-active.png",
+        "text": "营养资料库"
+      },
+      {
+        "pagePath": "pages/microp/microp",
+        "iconPath": "static/img/microp.png",
+        "selectedIconPath": "static/img/microp-active.png",
+        "text": "小百科"
+      }
+    ]
+  },
+  "permission": {},
+  "usingComponents": {},
+  "sitemapLocation": "sitemap83.json"
+}

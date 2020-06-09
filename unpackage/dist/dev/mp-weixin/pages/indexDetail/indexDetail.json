@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "计划",
+  "navigationBarBackgroundColor": "#3d3e42",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "model": "/colorui/components/cu-custom"
+  }
+}

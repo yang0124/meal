@@ -1,0 +1,1 @@
+<view><button type="default" data-event-opts="{{[['tap',[['handlePopup',['$event']]]]]}}" bindtap="__e">点击弹框</button><spopup bind:input="__e" vue-id="3ef1c834-1" custom-class="demo-popup" value="{{visible}}" data-event-opts="{{[['^input',[['__set_model',['','visible','$event',[]]]]]]}}" bind:__l="__l" vue-slots="{{['default']}}"><text>这是弹框的内容部分</text></spopup></view>

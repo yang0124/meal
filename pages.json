@@ -1,0 +1,101 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style":{
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "食谱",
+				"navigationBarBackgroundColor": "#3d3e42"
+			}
+		},
+        {
+            "path" : "pages/nutrition/nutrition",
+            "style" : {
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "营养知识库",
+				"navigationBarBackgroundColor": "#000000"
+			}
+        },
+        {
+            "path" : "pages/microp/microp",
+            "style" : {
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "小百科",
+				"navigationBarBackgroundColor": "#000000"
+			}
+        },
+		{
+		    "path" : "pages/indexDetail/indexDetail",
+		    "style" : {
+				"navigationBarTitleText": "计划",
+				"navigationBarBackgroundColor": "#3d3e42",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+		    "path" : "pages/nutrDetail/nutrDetail",
+		    "style" : {
+				"navigationBarTitleText": "详情",
+				"navigationBarBackgroundColor": "#3d3e42",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+		    "path" : "pages/cookingDetail/cookingDetail",
+		    "style" : {
+				"navigationBarTitleText": "烹饪制作",
+				"navigationBarBackgroundColor": "#3d3e42",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+		    "path" : "pages/micrDetail/micrDetail",
+		    "style" : {
+				"navigationBarTitleText": "烹饪制作",
+				"navigationBarBackgroundColor": "#3d3e42",
+				"navigationBarTextStyle": "white"
+			}
+		}
+        ,{
+            "path" : "pages/log/log",
+            "style" : {
+				"navigationStyle":"custom"
+			}
+        }
+        ,{
+            "path" : "pages/popup/popup",
+            "style" : {}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#3cc51f",
+	    "borderStyle": "black",
+	    "backgroundColor": "#fff",
+	    "list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/img/recipe.png",
+				"selectedIconPath": "static/img/recipe-active.png",
+				"text": "食谱"
+			}, 
+			{
+				"pagePath": "pages/nutrition/nutrition",
+				"iconPath": "static/img/nutrition.png",
+				"selectedIconPath": "static/img/nutrition-active.png",
+				"text": "营养资料库"
+			},
+			{
+				"pagePath": "pages/microp/microp",
+				"iconPath": "static/img/microp.png",
+				"selectedIconPath": "static/img/microp-active.png",
+				"text": "小百科"
+			}
+		]
+	}
+}

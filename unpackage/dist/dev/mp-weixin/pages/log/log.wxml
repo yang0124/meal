@@ -1,0 +1,1 @@
+<view class="content"><image src="../../static/img/shanshi.jpg" mode></image><button open-type="getUserInfo" data-event-opts="{{[['getuserinfo',[['wxLogin',['$event']]]]]}}" bindgetuserinfo="__e"><button class="cu-btn block bg-green margin-tb-sm lg round">微信登录</button></button></view>

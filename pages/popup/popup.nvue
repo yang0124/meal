@@ -1,0 +1,327 @@
+<template>
+	<view class="conatent">
+		<view class="grade-box">
+			<view class="grade-diamond" >
+				<image class="diamond-img"  :class="[grade>=10?'blue':'',grade>=5&grade<10?'yellow':'',grade<5?'gray':'',]"></image>
+				<view class="diamond-text">
+					<view class="diamond-top">
+						<text>当前等级V1</text>
+						<text>可享受百日康养</text>
+					</view>
+					<view class="diamond-middle" v-if="grade>=10">
+						<text>钻石</text>
+					</view>
+					<view class="diamond-middle" v-if="grade>=5&grade<10">
+						<text>黄金</text>
+					</view>
+					<view class="diamond-middle" v-if="grade<5">
+						<text>白银</text>
+					</view>
+					
+					<view class="diamond-bottom">
+						<text>推广人数：10-20人</text>
+						<text>获得大礼包：4个</text>
+					</view>
+				</view>
+			</view>
+			<view class="grade">
+				<view class="grade-gold">
+					<image class="gold-img" src="../../static/img/yellow-ban.png"></image>
+					<view class="gold-text">
+						<text class="big">黄金等级</text>
+						<text>查看详情</text>
+					</view>
+				</view>
+				<view class="grade-platinum">
+					<image class="platinum-img" src="../../static/img/blue-ban.png"></image>
+					<view class="platinum-text">
+						<text class="big">白金等级</text>
+						<text>查看详情</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<!-- 等级产品专区 -->
+		<view class="f-header m-t">
+			<view class="tit-box" :class="isshow?'active':''" @click="handleTab(true)">
+				<text class="tit">钻石大礼包</text>
+			</view>
+			<view class="tit-box" :class="isshow?'':'active'" @click="handleTab(false)">
+				<text class="tit">1688套餐</text>
+			</view>
+		</view>
+		
+		<!-- 钻石大礼包 -->
+		<view class="guess-section" v-if="isshow">
+			<view class="guess-item">
+				<view class="image-wra">
+					<image class="img-wra" src="../../static/img/anshen1.png"></image>
+				</view>
+				<text class="clamp">女性健康大礼包</text>
+				<view class="guess-font">
+					<text class="price">一键领取</text>
+				</view>
+			</view>
+			<view class="guess-item">
+				<view class="image-wra">
+					<image class="img-wra" src="../../static/img/anshen1.png"></image>
+				</view>
+				<text class="clamp">女性健康大礼包</text>
+				<view class="guess-font">
+					<text class="price">一键领取</text>
+				</view>
+			</view>
+		</view>
+		<!-- 1688套餐 -->
+		<view class="guess-section" v-else>
+			<view class="guess-item">
+				<view class="image-wra">
+					<image class="img-wra" src="../../static/img/anshen2.png"></image>
+				</view>
+				<text class="clamp">女性健康大礼包</text>
+				<view class="guess-font">
+					<text class="price">一键领取</text>
+				</view>
+			</view>
+			<view class="guess-item">
+				<view class="image-wra">
+					<image class="img-wra" src="../../static/img/anshen2.png"></image>
+				</view>
+				<text class="clamp">女性健康大礼包</text>
+				<view class="guess-font">
+					<text class="price">一键领取</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data(){
+			return{
+				user:'',
+				isshow:true,
+				grade:'',/* 等级 */
+			}
+		},
+		onShow(){
+			  this.user=uni.getStorageSync('userInfo');//获取用户信息
+		},
+		onLoad(){
+			this.user=uni.getStorageSync('userInfo');//获取用户信息
+			this.loadData()	
+		},
+		methods:{
+			loadData(){
+				console.log(this.user.id)
+				uni.request({/* 查询我的等级 */
+					url: this.$urlky+ '/level/queryMyLevel',
+					method: 'GET',
+					data:{
+						memberId:this.user.id
+					},
+					sslVerify:false,
+					header: {'content-type':'application/json'},
+					success: (res) => {
+						if(res.data.code==200){
+							let data=res.data.data;
+							console.log(data)
+							this.grade=data
+						}
+						
+					},fail(e) {
+						console.log(e)
+					}
+				})
+			},
+			//秒杀专区与生态原产地内容切换
+			handleTab1(){
+				this.isshow=true
+			},
+			handleTab2(){
+				this.isshow=false
+			},
+			handleTab(bool){
+				this.isshow=bool
+			},
+		}
+	}
+</script>
+
+<style lang='scss'>
+	page{
+		background-color: #FFFFFF;
+	}
+	.grade-box{
+		padding-top: 10px;
+		padding-left: 24px;
+		padding-right: 24px;
+		padding-bottom: 30px;
+	}
+	.grade-diamond{
+		position: relative;
+	}
+	.diamond-img{
+		width: 100%;
+		height: 160px;
+		border-radius: 10px;
+	}
+	.diamond-text{
+		width: 100%;
+		z-index: 2;
+		position: absolute;
+		top: 10px;
+		color: #FFFFFF;
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+	.diamond-top{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.diamond-middle{
+		text-align: center;
+		font-size: 32px;
+		margin-top: 15px;
+		margin-bottom: 20px;
+	}
+	.diamond-bottom{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	/* 黄金白金等级 */
+	.grade{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		
+	}
+	.grade-gold{
+		width: 50%;
+		padding-right: 4px;
+		position: relative;
+	}
+	.gold-img{
+		height: 100px;
+		border-radius: 12px;
+	}
+	.gold-text{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: absolute;
+		top: 30px;
+		left: 40px;
+		color: #FFFFFF;
+	}
+	.grade-platinum{
+		width: 50%;
+		padding-left: 4px;
+		position: relative;
+	}
+	.platinum-img{
+		height: 100px;
+		border-radius: 12px;
+	}
+	.platinum-text{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: absolute;
+		top: 30px;
+		left: 40px;
+		color: #FFFFFF;
+	}
+	.big{
+		font-size: 20px;
+	}
+	/* 礼包专区 */
+	.f-header{
+		width: 100%;
+		display:flex;
+		align-items:center;
+		background-color: #fff;
+		border-width: 1px;
+		border-style: solid;
+		border-color:#f17046 ;
+		.tit-box{
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			height: 40px;
+			text-align: center;
+			font-size: 36upx;
+			font-weight: 700;
+			color: #f17046;
+			line-height: 1.3;
+			height: 40px;
+			line-height: 40px;
+			background-color: #FFFFFF;
+		}
+		.active{/* 钻石大礼包与1688套餐切换 */
+			font-size: 36upx;
+			font-weight: 700;
+			line-height: 1.3;
+			text-align: center;
+			height: 40px;
+			line-height: 40px;
+			color: #fffbff;
+			background: #f17046;
+		}
+	}
+	
+	/* 钻石大礼包 */
+	/* 1688套餐 */
+	.guess-section{
+		display:flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap:wrap;
+		padding: 10px 20px;
+		background-color: #fff;
+		padding-top: 15px;
+	}
+	.guess-item{
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 15px;
+	}
+	.img-wra{
+		width: 145px;
+		height: 160px;
+	}
+	.clamp{
+		font-size: 16px;
+		margin-top: 6px;
+		margin-bottom: 6px;
+	}
+	.guess-font{
+		width: 80px;
+		height: 20px;
+		line-height: 20px;
+		background-color:#f17046;
+		text-align: center;
+		border-radius: 10px;
+	}
+	.price{
+		color: #FFFFFF;
+		font-size: 16px;
+	}
+	.blue{
+		background-image: url(../../static/img/blue-ban.png);
+	}
+	.yellow{
+		background-image: url(../../static/img/yellow-ban.png);
+	}
+	.gray{
+		background-image: url(../../static/img/grey-ban.png);
+	}
+</style>
+
+
